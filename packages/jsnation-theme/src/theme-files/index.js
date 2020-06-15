@@ -10,7 +10,7 @@ const Root = ({ state }) => {
       <nav>
         <Link href="/">Home</Link>
         <Link href="/page/2">More Posts</Link>
-        <Link href="lorem-ipsum">Lorem Ipsum</Link>
+        <Link href="/lorem-ipsum">Lorem Ipsum</Link>
       </nav>
     </>
   );
