@@ -1,11 +1,11 @@
 import React from "react";
-import { connect, Global, css, styled } from "frontity";
+import { connect, Global, css, styled, Head } from "frontity";
 import Link from "./links";
 import List from "./list";
 import Post from "./post";
 import Page from "./page";
 
-const Root = ({ state }) => {
+const Root = ({ state, actions }) => {
   const data = state.source.get(state.router.link);
   return (
     <>
@@ -21,15 +21,25 @@ const Root = ({ state }) => {
           }
         `}
       />
+      <Head>
+        <title>Frontity workshop at JSNation</title>
+      </Head>
       <Header>
         <HeaderContent>
           <h1>Workshop</h1>
           <p>URL: {state.router.link}</p>
-          <Menu>
-            <Link href="/">Home</Link>
-            <Link href="/page/2">More Posts</Link>
-            <Link href="/lorem-ipsum">Lorem Ipsum</Link>
-          </Menu>
+          {state.theme.isMenuOpen ? (
+            <>
+              <button onClick={actions.theme.closeMenu}>Close</button>
+              <Menu>
+                <Link href="/">Home</Link>
+                <Link href="/page/2">More Posts</Link>
+                <Link href="/lorem-ipsum">Lorem Ipsum</Link>
+              </Menu>
+            </>
+          ) : (
+            <button onClick={actions.theme.openMenu}>Open</button>
+          )}
         </HeaderContent>
       </Header>
       <Main>

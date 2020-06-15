@@ -6,9 +6,18 @@ export default {
     "jsnation-theme": Root
   },
   state: {
-    "jsnation-theme": {}
+    theme: {
+      isMenuOpen: false
+    }
   },
   actions: {
-    "jsnation-theme": {}
+    theme: {
+      openMenu: ({ state }) => {
+        state.theme.isMenuOpen = true;
+      },
+      closeMenu: ({ state }) => {
+        state.theme.isMenuOpen = false;
+      }
+    }
   }
 };
