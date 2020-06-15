@@ -1,5 +1,5 @@
 import React from "react";
-import { connect } from "frontity";
+import { connect, styled } from "frontity";
 import Link from "./links";
 
 const List = ({ state }) => {
@@ -9,9 +9,11 @@ const List = ({ state }) => {
       {data.items.map(item => {
         const post = state.source.post[item.id];
         return (
-          <Link key={item.id} href={post.link}>
-            {post.title.rendered}
-          </Link>
+          <Items>
+            <Link key={item.id} href={post.link}>
+              {post.title.rendered}
+            </Link>
+          </Items>
         );
       })}
     </>
@@ -19,3 +21,10 @@ const List = ({ state }) => {
 };
 
 export default connect(List);
+
+const Items = styled.div`
+  & > div {
+    margin: 12px 0;
+    font-size: 14px;
+  }
+`;
